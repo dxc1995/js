@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择早餐</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 598px;
+            margin: 40px auto;
+        }
+
+        .box div {
+            float: left;
+            width: 150px;
+            height: 150px;
+            line-height: 150px;
+            text-align: center;
+            border: 2px solid orange;
+            margin-right: -1px;
+            margin-bottom: -1px;
+        }
+
+        .box div:nth-child(5) {
+            cursor: pointer;
+            background-color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="option">豆腐脑油条</div>
+        <div class="option">鸡蛋饼+云吞</div>
+        <div class="option">煎饼果子</div>
+        <div class="option">牛掌柜</div>
+        <div id="start">开始选择</div>
+        <div class="option">炸串</div>
+        <div class="option">包子</div>
+        <div class="option">粥</div>
+        <div class="option">鸡蛋灌饼</div>
+    </div>
+
+    <script>
+        let btn = document.getElementById("start");
+        let options = document.getElementsByClassName("option");
+        let timer = null;
+        btn.onclick = function() {
+        let count = 0;
+
+        if (timer == null) {
+            timer = setInterval(function() {
+                count++;
+                // 随机 0-7的数,通过数组下标获取具体的元素
+                let ran = Math.round(Math.random() * (7-0) + 0);
+
+                // 先清除所有options下的样式
+                for (let i = 0; i<options.length; i++) {
+                    options[i].style.backgroundColor = "#fff";
+                }
+              // 给选中的元素添加样式(背景颜色)
+                options[ran].style.backgroundColor = "orange";
+                
+                if (count >= 5) {
+                    clearInterval(timer);
+                    timer = null;
+                }
+            },300)
+        }
+    }
+    </script>
+</body>
+</html>
