@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            font-size: 20px;
+            color: red;
+        }
+
+        p:nth-child(1) {
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <p>支付成功</p>
+    <p><span>10</span> 秒后返回首页</p>
+    <p><button>立即返回首页</button></p>
+
+    <script>
+        window.onload = function() {
+            let timer = 10;
+            setInterval(function() {
+                timer --;
+
+                document.getElementsByTagName("span")[0].innerHTML = timer;
+
+                if (timer == 0) {
+                    location.href="http://baidu.com";
+                }
+            },1000)
+        }
+        
+    </script>
+</body>
+</html>
